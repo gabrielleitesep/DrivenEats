@@ -1,37 +1,36 @@
-function selecionar(elemento, nomeClasse) {
+function selecionar(elemento) {
 
-   const escolhido = document.querySelector(`.${nomeClasse} .selecionado `);
-
-   if (escolhido !== null) {
-      escolhido.classList.remove("selecionado");
+    let nomeComida = elemento.parentNode.className
+    console.log(nomeComida)
 
 
-   }
+   const escolhido = document.querySelectorAll(`.${nomeComida} .selecionado`);
 
-   if (escolhido !== elemento) {
-      elemento.classList.add("selecionado");
+   console.log(escolhido)
+   if (escolhido.length > 0) {
+    escolhido[0].classList.remove("selecionado");
 
-   }
+ }
 
-   verificarPedido();
+    elemento.classList.toggle("selecionado");
+
+    
+   fecharPedido();
 }
-
-function verificarPedido() {
+function fecharPedido() {
    let selecionados = document.querySelectorAll(".selecionado");
 
-   const botaoFechamento = document.querySelector(".botao-barra")
+   const botaoFechar = document.querySelector(".botao-barra h1")
    if (selecionados.length === 3) {
 
-      botaoFechamento.innerHTML = "Fechar pedido";
-      botaoFechamento.classList.add("finalizar-pedido");
+      botaoFechar.innerHTML = "Fechar pedido";
 
    }
-   if (selecionados.length !== 3) {
+   const botaoVerde = document.querySelector(".botao-barra")
+   if (selecionados.length === 3) {
 
-      botaoFechamento.innerHTML = "Selecione os 3 itens <br> para fechar o pedido";
-      botaoFechamento.classList.remove("finalizar-pedido");
+      botaoVerde.classList.add("botao-verde");
+
    }
-
-
 
 }
